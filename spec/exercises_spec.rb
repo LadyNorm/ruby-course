@@ -18,5 +18,10 @@ describe Exercises do
     ans = Exercises.ex2([1, 2, 3])
     expect(ans).to eq 2
   end
+
+  it "returns the sum of the elements in the array" do
+    ans = Exercises.ex3([1, 2, 3])
+    expect(ans).to eq 6
+  end
   
 end
