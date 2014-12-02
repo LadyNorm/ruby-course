@@ -8,5 +8,10 @@ describe Exercises do
     ans = Exercises.ex0("wishes")
     expect(ans).to eq "nope"
   end
+
+  it "returns the number of elements in an array" do
+    ans = Exercises.ex1([1, 2, 3])
+    expect(ans).to eq 3
+  end
   
 end
