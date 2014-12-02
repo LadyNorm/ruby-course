@@ -20,7 +20,11 @@ module Exercises
   # Exercise 2
   #  - Returns the second element of an array
   def self.ex2(array)
-    # TODO
+    if array.count >= 2
+      return array[1]
+    else
+      return "No second element"
+    end
   end
 
   # Exercise 3

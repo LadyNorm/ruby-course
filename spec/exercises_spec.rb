@@ -13,5 +13,10 @@ describe Exercises do
     ans = Exercises.ex1([1, 2, 3])
     expect(ans).to eq 3
   end
+
+  it "returns the second element in an array" do
+    ans = Exercises.ex2([1, 2, 3])
+    expect(ans).to eq 2
+  end
   
 end
