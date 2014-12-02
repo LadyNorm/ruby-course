@@ -31,13 +31,18 @@ module Exercises
   #  - Returns the sum of the given array of numbers
   def self.ex3(array)
     sum = array.inject{|sum, x| sum + x}
+
+    if array.count == 0
+      return 0
+    end
     return sum
   end
 
   # Exercise 4
   #  - Returns the max number of the given array
   def self.ex4(array)
-    # TODO
+    ans = array.max
+    return ans
   end
 
   # Exercise 5
