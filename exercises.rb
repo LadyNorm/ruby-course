@@ -41,6 +41,10 @@ module Exercises
   # Exercise 4
   #  - Returns the max number of the given array
   def self.ex4(array)
+    if array.count == 0
+      return nil
+    end
+
     ans = array.max
     return ans
   end
@@ -48,7 +52,9 @@ module Exercises
   # Exercise 5
   #  - Iterates through an array and `puts` each element
   def self.ex5(array)
-    # TODO
+    array.each do |x|
+      puts x
+    end
   end
 
   # Exercise 6
@@ -56,9 +62,13 @@ module Exercises
   #  - If the last item is already 'panda', update
   #    it to 'GODZILLA' instead
   def self.ex6(array)
-    # TODO
+    if array[-1] == 'panda'
+      array[-1] = 'godzilla'
+    else array[-1] = 'panda'
+    end
+    return array
   end
-
+  
   # Exercise 7
   #  - If the string `str` exists in the array,
   #    add `str` to the end of the array

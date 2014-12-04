@@ -27,6 +27,19 @@ describe Exercises do
   it "returns the max element in an array" do
     ans = Exercises.ex4([1, 2, 3])
     expect(ans).to eq 3
+
+    ans = Exercises.ex4([])
+    expect(ans).to eq nil
   end
   
+  it "puts the elements of an array" do
+    expect(STDOUT).to receive(:puts).and_return('a')
+    ans = Exercises.ex5(['a'])
+  end
+
+  it "changes the last element of an array to panda, or godzilla" do
+    ans = Exercises.ex6(["cat", "apple", "banana"])
+    expect(ans). to eq ["cat", "apple", "panda"]
+  end
+
 end
