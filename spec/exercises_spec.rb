@@ -39,7 +39,12 @@ describe Exercises do
 
   it "changes the last element of an array to panda, or godzilla" do
     ans = Exercises.ex6(["cat", "apple", "banana"])
-    expect(ans). to eq ["cat", "apple", "panda"]
+    expect(ans).to eq ["cat", "apple", "panda"]
+  end
+
+  it "checks array for string, if present, adds string" do
+    ans = Exercises.ex7(["cat", "dog", "banana"], "cat")
+    expect(ans).to eq ["cat", "dog", "banana", "cat"]
   end
 
 end
