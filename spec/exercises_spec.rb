@@ -1,4 +1,5 @@
 require "./exercises.rb"
+require 'date'
 
 describe Exercises do 
   it "return string time 3 or nope" do
@@ -45,6 +46,21 @@ describe Exercises do
   it "checks array for string, if present, adds string" do
     ans = Exercises.ex7(["cat", "dog", "banana"], "cat")
     expect(ans).to eq ["cat", "dog", "banana", "cat"]
+  end
+
+  it "prints an array of hashes of name and occupations" do
+    expect(STDOUT).to receive(:puts).and_return('Nora is a developer')
+    ans = Exercises.ex8([{:name => 'Nora', :occupation => 'developer'}])
+  end
+
+  it "determines if a given year is a leap year" do
+    ans = Exercises.ex9(2012)
+    expect(ans).to eq(true)
+  end
+
+  it "determines if a given time is between 4 and 6 pm" do
+    my_time = Time.new(2013, 03, 03, 17)
+    allow(Time).to receive(:now).and_return(my_time)
   end
 
 end

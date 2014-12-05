@@ -84,15 +84,17 @@ module Exercises
   #    { :name => 'Bob', :occupation => 'Builder' }
   #    Iterate through `people` and print out their name and occupation.
   def self.ex8(people)
-    # TODO
+    people.each do |x|
+      puts "#{x[:name]} is a #{x[:occupation]}"
+    end
   end
 
   # Exercise 9
   #  - Returns `true` if the given time is in a leap year
   #    Otherwise, returns `false`
   # Hint: Google for the wikipedia article on leap years
-  def self.ex9(time)
-    # TODO
+  def self.ex9(year)
+    ((year % 400 == 0 || year % 100 != 0) && year % 4 == 0) ? true : false
   end
 
   # Exercise 10
@@ -100,8 +102,15 @@ module Exercises
   #    Otherwise, returns "normal prices"
   # Hint: Read the "Stubbing" documentation on the Learn app.
   def self.ex10
-    # TODO
+    current_time = Time.now
+    if current_time.hour >= 16 && current_time.hour <= 18
+      return "happy hour"
+    else
+      return "normal prices"
+    end
   end
+
+
 end
 
 module Extensions
