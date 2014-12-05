@@ -54,7 +54,7 @@ describe Exercises do
   end
 
   it "determines if a given year is a leap year" do
-    ans = Exercises.ex9(2012)
+    ans = Exercises.ex9(Date.new(2012))
     expect(ans).to eq(true)
   end
 
