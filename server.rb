@@ -63,7 +63,7 @@ get '/shops' do
   # headers['Content-Type'] = 'application/json'
   # RestClient.get("http://pet-shop.api.mks.io/shops")
 
-  shops = Petshopserver::ShopsRepo.all mydb
+  shops = Petshopserver::ShopsRepo.get_all_shops mydb
   shops.to_json
 end
 
@@ -107,7 +107,8 @@ get '/shops/:id/cats' do
   headers['Content-Type'] = 'application/json'
   id = params[:id]
   # TODO: Grab from database instead
-  RestClient.get("http://pet-shop.api.mks.io/shops/#{id}/cats")
+  cats = Petshopserver::CatsRepo.all_from_shop(mydb, id)
+  JSON.generate(cats)
 end
 
 put '/shops/:shop_id/cats/:id/adopt' do
@@ -115,8 +116,15 @@ put '/shops/:shop_id/cats/:id/adopt' do
   shop_id = params[:shop_id]
   id = params[:id]
   # TODO: Grab from database instead
-  RestClient.put("http://pet-shop.api.mks.io/shops/#{shop_id}/cats/#{id}",
-    { adopted: true }, :content_type => 'application/json')
+    adopt_info = {
+      type: 'cat',
+      user_id: session['user_id'],
+      pet_id: id
+    }
+  cat = Petshopserver::UsersRepo.get_cat_by_id(mydb, id)
+  if(cat['adopted'].class.name == 'string')
+    Petshopserver::UsersRepo.adopt(mydb, adopt_info)
+  end
   # TODO (after you create users table): Attach new cat to logged in user
 end
 
@@ -128,7 +136,8 @@ get '/shops/:id/dogs' do
   headers['Content-Type'] = 'application/json'
   id = params[:id]
   # TODO: Update database instead
-  RestClient.get("http://pet-shop.api.mks.io/shops/#{id}/dogs")
+  dogs = Petshopserver::DogsRepo.all_from_shop(mydb, id)
+  JSON.generate(dogs)
 end
 
 put '/shops/:shop_id/dogs/:id/adopt' do
@@ -136,8 +145,15 @@ put '/shops/:shop_id/dogs/:id/adopt' do
   shop_id = params[:shop_id]
   id = params[:id]
   # TODO: Update database instead
-  RestClient.put("http://pet-shop.api.mks.io/shops/#{shop_id}/dogs/#{id}",
-    { adopted: true }, :content_type => 'application/json')
+  adopt_info = {
+      type: 'dog',
+      user_id: session['user_id'],
+      pet_id: id
+    }
+  dog = Petshopserver::UsersRepo.get_dog_by_id(mydb, id)
+  if(dog['adopted'].class.name == 'string')
+    Petshopserver::UsersRepo.adopt(mydb, adopt_info)
+  end
   # TODO (after you create users table): Attach new dog to logged in user
 end
 

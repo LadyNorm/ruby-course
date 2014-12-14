@@ -56,8 +56,8 @@ module Petshopserver
       CREATE TABLE IF NOT EXISTS userPets(
         id SERIAL PRIMARY KEY,
         user_id INTEGER references users(id),
-        cat_id INTEGER references cats(id),
-        dog_id INTEGER references dogs(id)
+        type VARCHAR,
+        pet_id INTEGER
       );
     SQL
   end
@@ -71,10 +71,11 @@ module Petshopserver
 
   def self.drop_tables(db)
     db.exec <<-SQL
-      DROP TABLE shops;
-      DROP TABLE dogs;
-      DROP TABLE cats;
-      DROP TABLE users;
+      DROP TABLE shops CASCADE;
+      DROP TABLE dogs CASCADE;
+      DROP TABLE cats CASCADE;
+      DROP TABLE users CASCADE;
+      DROP TABLE userPets;
     SQL
   end
  
